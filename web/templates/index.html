@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Employee Management</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 40px; }
+        table { border-collapse: collapse; width: 50%; margin-top: 20px; }
+        th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+        th { background-color: #f2f2f2; }
+        form { margin-bottom: 20px; }
+        input { margin-right: 10px; padding: 5px; }
+    </style>
+</head>
+<body>
+    <h2>Add Employee</h2>
+    <form action="/add" method="POST">
+        <input type="text" name="name" placeholder="Employee Name" required>
+        <input type="text" name="department" placeholder="Department" required>
+        <button type="submit">Add</button>
+    </form>
+
+    <h2>Employee List</h2>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Department</th>
+        </tr>
+        {% for emp in employees %}
+        <tr>
+            <td>{{ emp[0] }}</td>
+            <td>{{ emp[1] }}</td>
+            <td>{{ emp[2] }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

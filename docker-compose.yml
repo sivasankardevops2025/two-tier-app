@@ -1,0 +1,17 @@
+version: "3.8"
+services:
+  mysql:
+    build: ./db
+    environment:
+      MYSQL_ROOT_PASSWORD: localtestpass
+      MYSQL_DATABASE: employeedb
+    ports: ["3306:3306"]
+  web:
+    build: ./web
+    environment:
+      DB_HOST: mysql
+      DB_USER: root
+      DB_PASSWORD: localtestpass
+      DB_NAME: employeedb
+    ports: ["5000:5000"]
+    depends_on: [mysql]
